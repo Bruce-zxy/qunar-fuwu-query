@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "esnext",
+    "noImplicitAny": false,
+    "outDir": "./dist",
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true, // 允许没有默认导出的库默认导入
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "newLine": "LF"
+  },
+  "typeRoots": ["typings.d.ts"],
+  "include": ["src/**/*","typings.d.ts"],
+  "exclude": ["node_modules", "dist", "src/app"]
+}

@@ -1,0 +1,10 @@
+{
+  "i18n-ally.localesPaths": [
+    "src/app/admin/src/locales"
+  ],
+  "cSpell.words": [
+    "esim",
+    "fuwu",
+    "qunar"
+  ]
+}

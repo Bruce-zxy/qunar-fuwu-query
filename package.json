@@ -1,0 +1,46 @@
+{
+  "name": "qunar-fuwu-query",
+  "description": "fuwu query of qunar client",
+  "version": "1.0.0",
+  "main": "src/app.ts",
+  "devDependencies": {
+    "@types/node": "^22.5.5",
+    "env-cmd": "^10.1.0",
+    "pm2": "^5.4.2",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.4"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "axios-cookiejar-support": "^5.0.2",
+    "crypto-js": "^4.2.0",
+    "dayjs": "^1.10.7",
+    "is-number": "^7.0.0",
+    "lowdb": "github:dankreiger/lowdb#chore/esm-cjs-hybrid-WITH-LIB",
+    "mitt": "^3.0.1",
+    "node-schedule": "^2.1.0",
+    "querystringify": "2.2.0",
+    "tough-cookie": "^5.0.0",
+    "uuid": "^10.0.0"
+  },
+  "scripts": {
+    "start": "env-cmd -f .env ts-node ./src/app.ts",
+    "dev": "env-cmd -f .env nodemon -e ts --exec ts-node ./src/app.ts",
+    "build": "rm -rf dist/* && tsc",
+    "staging:pm2": "yarn && yarn build && env-cmd -f .env.staging pm2 start dist/app.js -n 'qunar-fuwu-query'",
+    "staging:pm2-restart": "yarn && yarn build && env-cmd -f .env.staging pm2 restart 'qunar-fuwu-query' --update-env",
+    "deploy:pm2": "yarn && yarn build && env-cmd -f .env.production pm2 start dist/app.js -n 'qunar-fuwu-query'",
+    "deploy:pm2-restart": "yarn && yarn build && env-cmd -f .env.production pm2 restart 'qunar-fuwu-query' --update-env",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bruce-zxy/qunar-fuwu-query.git"
+  },
+  "author": "hadesz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Bruce-zxy/qunar-fuwu-query/issues"
+  },
+  "homepage": "https://github.com/Bruce-zxy/qunar-fuwu-query#readme"
+}
