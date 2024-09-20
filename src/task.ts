@@ -2,7 +2,7 @@
  * @Author: HadesZ
  * @Date: 2024-09-20 17:16:49
  * @LastEditors: HadesZ
- * @LastEditTime: 2024-09-21 00:50:26
+ * @LastEditTime: 2024-09-21 01:34:07
  * @Description:
  */
 import dayjs from "dayjs";
@@ -40,7 +40,7 @@ export const initCookie = async () => {
 		WxPusher.msgSend({
 			appToken: config.wxpusher.token,
 			content: `<p style="color: white;background-color: red">${e.toString()}</p>`,
-			summary: e.message,
+			summary: "初始化Cookie出错",
 			topicIds: [config.wxpusher.errorTopicID],
 			contentType: 2,
 		});
@@ -105,7 +105,7 @@ export const getGQOrderTask = () => {
 			}
 			WxPusher.msgSend({
 				appToken: config.wxpusher.token,
-				content: `<code style="color: black;background-color: white">${JSON.stringify(newData, null, 2)}</code>`,
+				content: `<pre>${JSON.stringify(newData, null, 4)}</pre>`,
 				summary: `机票新增${newData.length}个改签订单`,
 				topicIds: [config.wxpusher.orderTopicID],
 				contentType: 2,
@@ -114,7 +114,16 @@ export const getGQOrderTask = () => {
 			cacheDB.write();
 			return res;
 		})
-		.catch(console.error);
+		.catch((e) => {
+			console.error(e.message);
+			WxPusher.msgSend({
+				appToken: config.wxpusher.token,
+				content: `<p style="color: white;background-color: red">${e.toString()}</p>`,
+				summary: "改签订单查询出错",
+				topicIds: [config.wxpusher.errorTopicID],
+				contentType: 2,
+			});
+		});
 };
 
 export const getRefundRecordTask = () => {
@@ -159,7 +168,7 @@ export const getRefundRecordTask = () => {
 			}
 			WxPusher.msgSend({
 				appToken: config.wxpusher.token,
-				content: `<code style="color: black;background-color: white">${JSON.stringify(newData, null, 2)}</code>`,
+				content: `<pre>${JSON.stringify(newData, null, 4)}</pre>`,
 				summary: `机票新增${newData.length}个退款订单`,
 				topicIds: [config.wxpusher.orderTopicID],
 				contentType: 2,
@@ -168,7 +177,16 @@ export const getRefundRecordTask = () => {
 			cacheDB.write();
 			return res;
 		})
-		.catch(console.error);
+		.catch((e) => {
+			console.error(e.message);
+			WxPusher.msgSend({
+				appToken: config.wxpusher.token,
+				content: `<p style="color: white;background-color: red">${e.toString()}</p>`,
+				summary: "退款订单查询出错",
+				topicIds: [config.wxpusher.errorTopicID],
+				contentType: 2,
+			});
+		});
 };
 
 export const getQualityCheckTask = () => {
@@ -207,7 +225,7 @@ export const getQualityCheckTask = () => {
 			}
 			WxPusher.msgSend({
 				appToken: config.wxpusher.token,
-				content: `<code style="color: black;background-color: white">${JSON.stringify(newData, null, 2)}</code>`,
+				content: `<pre>${JSON.stringify(newData, null, 4)}</pre>`,
 				summary: `机票新增${newData.length}个质检任务`,
 				topicIds: [config.wxpusher.orderTopicID],
 				contentType: 2,
@@ -216,7 +234,16 @@ export const getQualityCheckTask = () => {
 			cacheDB.write();
 			return res;
 		})
-		.catch(console.error);
+		.catch((e) => {
+			console.error(e.message);
+			WxPusher.msgSend({
+				appToken: config.wxpusher.token,
+				content: `<p style="color: white;background-color: red">${e.toString()}</p>`,
+				summary: "质检任务查询出错",
+				topicIds: [config.wxpusher.errorTopicID],
+				contentType: 2,
+			});
+		});
 };
 
 export const getPaidanListTask = () => {
@@ -254,7 +281,7 @@ export const getPaidanListTask = () => {
 			}
 			WxPusher.msgSend({
 				appToken: config.wxpusher.token,
-				content: `<code style="color: black;background-color: white">${JSON.stringify(newData, null, 2)}</code>`,
+				content: `<pre>${JSON.stringify(newData, null, 4)}</pre>`,
 				summary: `机票新增${newData.length}条派单消息`,
 				topicIds: [config.wxpusher.orderTopicID],
 				contentType: 2,
@@ -263,7 +290,16 @@ export const getPaidanListTask = () => {
 			cacheDB.write();
 			return res;
 		})
-		.catch(console.error);
+		.catch((e) => {
+			console.error(e.message);
+			WxPusher.msgSend({
+				appToken: config.wxpusher.token,
+				content: `<p style="color: white;background-color: red">${e.toString()}</p>`,
+				summary: "派单任务查询出错",
+				topicIds: [config.wxpusher.errorTopicID],
+				contentType: 2,
+			});
+		});
 };
 
 export const getGongdanListTask = () => {
@@ -307,7 +343,7 @@ export const getGongdanListTask = () => {
 			}
 			WxPusher.msgSend({
 				appToken: config.wxpusher.token,
-				content: `<code style="color: black;background-color: white">${JSON.stringify(newData, null, 2)}</code>`,
+				content: `<pre>${JSON.stringify(newData, null, 4)}</pre>`,
 				summary: `机票新增${newData.length}个工单任务`,
 				topicIds: [config.wxpusher.orderTopicID],
 				contentType: 2,
@@ -316,7 +352,16 @@ export const getGongdanListTask = () => {
 			cacheDB.write();
 			return res;
 		})
-		.catch(console.error);
+		.catch((e) => {
+			console.error(e.message);
+			WxPusher.msgSend({
+				appToken: config.wxpusher.token,
+				content: `<p style="color: white;background-color: red">${e.toString()}</p>`,
+				summary: "工单任务查询出错",
+				topicIds: [config.wxpusher.errorTopicID],
+				contentType: 2,
+			});
+		});
 };
 
 export const getSOPListTask = () => {
@@ -363,7 +408,7 @@ export const getSOPListTask = () => {
 			}
 			WxPusher.msgSend({
 				appToken: config.wxpusher.token,
-				content: `<code style="color: black;background-color: white">${JSON.stringify(newData, null, 2)}</code>`,
+				content: `<pre>${JSON.stringify(newData, null, 4)}</pre>`,
 				summary: `机票新增${newData.length}条SOP消息`,
 				topicIds: [config.wxpusher.orderTopicID],
 				contentType: 2,
@@ -372,5 +417,14 @@ export const getSOPListTask = () => {
 			cacheDB.write();
 			return res;
 		})
-		.catch(console.error);
+		.catch((e) => {
+			console.error(e.message);
+			WxPusher.msgSend({
+				appToken: config.wxpusher.token,
+				content: `<p style="color: white;background-color: red">${e.toString()}</p>`,
+				summary: "SOP查询出错",
+				topicIds: [config.wxpusher.errorTopicID],
+				contentType: 2,
+			});
+		});
 };
